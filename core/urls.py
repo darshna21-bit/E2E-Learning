@@ -16,16 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='/api/notes/')),
     path('admin/', admin.site.urls),
     # JWT auth
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     # user registration
     path('api/', include('users.urls')),
+    path('api/notes/', include('notes.urls')),  # Include notes app URLs
 ]
