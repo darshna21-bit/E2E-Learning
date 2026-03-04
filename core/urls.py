@@ -31,4 +31,5 @@ urlpatterns = [
     # user registration
     path('api/', include('users.urls')),
     path('api/notes/', include('notes.urls')),  # Include notes app URLs
+    path('api/orders/', include('orders.urls')),  # Include orders app URLs
 ]
