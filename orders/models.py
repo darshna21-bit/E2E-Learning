@@ -1,6 +1,4 @@
-from django.db import models
-
-# Create your models here.
+#orders/models.py
 from django.db import models
 from django.conf import settings
 from notes.models import Note
@@ -15,4 +13,5 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.email} - {self.note.title}"
+        status = "Paid" if self.is_paid else "Pending"
+        return f"{self.user.email} - {self.note.title} ({status})"

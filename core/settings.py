@@ -158,3 +158,7 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
+# RAZORPAY CREDENTIALS
+# TODO: Replace these with your real Test Keys from the Razorpay Dashboard later!
+RAZORPAY_KEY_ID = 'rzp_test_dummy_key_id'
+RAZORPAY_KEY_SECRET = 'dummy_secret_key_dont_use_this'
