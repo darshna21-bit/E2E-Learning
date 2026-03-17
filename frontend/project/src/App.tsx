@@ -9,6 +9,9 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import ContactPage from './pages/ContactPage';
 import { AuthProvider } from './context/AuthContext';
+import Terms from './pages/Terms';
+import Privacy from './pages/privacy';
+import Refund from './pages/Refund';
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/refund" element={<Refund />} />
             </Routes>
           </main>
           <Footer />
