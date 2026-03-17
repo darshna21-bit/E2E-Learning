@@ -24,7 +24,7 @@ const Hero = () => {
           position: absolute;
           inset: 0;
           background: url('https://t4.ftcdn.net/jpg/04/30/26/81/360_F_430268143_vgIE6L3H5JRxpqeAP1QBm2s2fOYmRNDC.jpg') center/cover no-repeat;
-          opacity: 0.4;
+          opacity: 0.7;
         }
         .hero-glow {
           position: absolute;
