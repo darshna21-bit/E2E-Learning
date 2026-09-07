@@ -11,10 +11,25 @@ const SignupPage = () => {
   const { signup } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    signup(name, email, password);
-    navigate('/');
+    setError(null);
+    setLoading(true);
+    try {
+      await signup(name, email, password);
+      navigate('/');
+    } catch (err: any) {
+      if (err.response?.data) {
+        setError(JSON.stringify(err.response.data));
+      } else {
+        setError('Signup failed. Please try again.');
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   const containerVariants = {
@@ -143,19 +158,24 @@ const SignupPage = () => {
             />
           </motion.div>
 
-          {/* Submit Button */}
-          <motion.div variants={itemVariants}>
-            <motion.button
-              type="submit"
-              onClick={handleSubmit}
-              className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md shadow-blue-200"
-              whileHover={{ scale: 1.02, boxShadow: '0 8px 25px rgba(37,99,235,0.35)' }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Sign Up
-            </motion.button>
-          </motion.div>
-        </motion.div>
+{error && (
+  <div className="bg-red-50 text-red-600 p-3 rounded-md text-sm mb-4 break-words">
+    {error}
+  </div>
+)}
+
+{/* Submit Button */}
+<motion.div variants={itemVariants}>
+  <motion.button
+    type="submit"
+    disabled={loading}
+    className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md shadow-blue-200 disabled:opacity-50"
+    whileHover={{ scale: 1.02, boxShadow: '0 0px 25px rgba(37,99,235,0.35)' }}
+    whileTap={{ scale: 0.98 }}
+  >
+    {loading ? 'Creating account...' : 'Sign Up'}
+  </motion.button>
+</motion.div>
 
         {/* Footer link */}
         <motion.p

@@ -8,6 +8,8 @@ import OrdersPage from './pages/OrdersPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import ContactPage from './pages/ContactPage';
+import CreatorDashboard from './pages/CreatorDashboard';
+import AdminDashboard from './pages/AdminDashboard';
 import { AuthProvider } from './context/AuthContext';
 import Terms from './pages/Terms';
 import Privacy from './pages/privacy';
@@ -28,6 +30,8 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/creator-dashboard" element={<CreatorDashboard />} />
+              <Route path="/admin-dashboard" element={<AdminDashboard />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/refund" element={<Refund />} />
